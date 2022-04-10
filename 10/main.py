@@ -88,6 +88,11 @@ for event in longpoll.listen():
                     send_msg(event.user_id, "Приветствую.", keyboard)
 
             if event.text == "Привет":
+                try:
+                    users.index(event.user_id)
+                except:
+                    users.append(event.user_id)
+                    questions.append(0)
                 send_msg(event.user_id, "Привет вездекодерам!")
                 questions[users.index(event.user_id)] += 1
 
